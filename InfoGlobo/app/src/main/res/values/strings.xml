@@ -1,0 +1,20 @@
+<resources>
+    <!-- Application -->
+
+    <string name="app_name">InfoGlobo</string>
+    <string name="toolbar_text">O GLOBO</string>
+
+    <!-- Main Activity -->
+
+
+    <!-- Dialog -->
+
+    <string name="fetching_news">Carregando notícias do servidor&#8230;</string>
+    <string name="fetch_news_error">Erro carregando notícias.</string>
+    <string name="network_error_dialog_title">Erro</string>
+    <string name="network_error_dialog_message">Não há conexão. Por favor tente novamente mais tarde.</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_yes">Yes</string>
+</resources>

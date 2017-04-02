@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId APPLICATION_ID
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Tests.
+    testCompile "junit:junit:${JUNIT_VERSION}"
+    androidTestCompile ('com.android.support.test:runner:0.5') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile ('com.android.support.test:rules:0.5') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.2') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile ('com.android.support.test.espresso:espresso-idling-resource:2.2.2') {
+        exclude module: 'support-annotations'
+    }
+
+    // Support, Google and Square.
+    compile "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
+    compile "com.android.support:design:${SUPPORT_VERSION}"
+    compile "com.google.code.gson:gson:${GSON_VERSION}"
+    compile "com.squareup.picasso:picasso:${PICASSO_VERSION}"
+
+    // Dagger.
+    provided "javax.annotation:jsr250-api:${JSR_VERSION}"
+    compile "com.google.dagger:dagger:${DAGGER_VERSION}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_COMPILER_VERSION}"
+
+    // Reactive Programming.
+    compile "io.reactivex:rxandroid:${RX_ANDROID_VERSION}"
+    compile "io.reactivex:rxjava:${RX_JAVA_VERSION}"
+
+    // Retrofit.
+    compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:converter-gson:${CONVERTER_JSON_VERSION}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${ADAPTER_RX_JAVA_VERSION}"
+    compile "com.jakewharton.rxbinding:rxbinding:${RX_BINDING_VERSION}"
+}
