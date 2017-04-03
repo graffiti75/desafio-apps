@@ -53,7 +53,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
     compile "com.android.support:design:${SUPPORT_VERSION}"
     compile "com.google.code.gson:gson:${GSON_VERSION}"
-    compile "com.squareup.picasso:picasso:${PICASSO_VERSION}"
+    compile "com.github.bumptech.glide:glide:${GLIDE_VERSION}"
 
     // Dagger.
     provided "javax.annotation:jsr250-api:${JSR_VERSION}"

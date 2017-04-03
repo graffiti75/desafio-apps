@@ -52,6 +52,8 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.NoticiaA
 	public void onBindViewHolder(NoticiaAdapterViewHolder holder, int position) {
 		Noticia item = mItems.get(position);
 		holder.binding.setNoticia(item);
+		holder.binding.setSecao(item.getEditor());
+		holder.binding.setImagem(item.getImage());
 	}
 
 	@Override
@@ -60,22 +62,6 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.NoticiaA
 			return mItems.size();
 		}
 		return 0;
-	}
-
-	//--------------------------------------------------
-	// Animation Methods
-	//--------------------------------------------------
-
-	public void add(int position, Noticia city){
-		mItems.add(position, city);
-		notifyItemInserted(position);
-	}
-
-	public void remove(int position){
-		if (position >= mItems.size())
-			return;
-		mItems.remove(position);
-		notifyItemRemoved(position);
 	}
 
 	//--------------------------------------------------

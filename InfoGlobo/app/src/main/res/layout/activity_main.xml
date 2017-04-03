@@ -11,7 +11,9 @@
 
         <!-- Primeira Notícia -->
 
-        <include layout="@layout/activity_main__primeira_noticia" />
+        <include
+            android:id="@+id/included"
+            layout="@layout/activity_main__primeira_noticia" />
 
         <!-- Lista de Notícias -->
 

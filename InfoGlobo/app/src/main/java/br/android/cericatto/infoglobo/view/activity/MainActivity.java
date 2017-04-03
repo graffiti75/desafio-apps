@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity {
     private MainActivity mActivity = MainActivity.this;
 
     // Adapter.
-    private List<Noticia> mNoticiaList = new ArrayList<>();
     private NoticiaAdapter mAdapter;
     private ActivityMainBinding mBinding;
 
@@ -85,5 +83,6 @@ public class MainActivity extends BaseActivity {
 
     public void updateAdapter(List<Noticia> list) {
         mPresenter.updateAdapter(list, mBinding);
+        mPresenter.setHeader(list.get(0), mBinding);
     }
 }

@@ -4,22 +4,18 @@ import android.app.ProgressDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import br.android.cericatto.infoglobo.AppConfiguration;
 import br.android.cericatto.infoglobo.R;
 import br.android.cericatto.infoglobo.databinding.ActivityMainBinding;
 import br.android.cericatto.infoglobo.model.Noticia;
 import br.android.cericatto.infoglobo.model.api.GloboService;
-import br.android.cericatto.infoglobo.presenter.utils.ActivityUtils;
 import br.android.cericatto.infoglobo.presenter.utils.DialogUtils;
 import br.android.cericatto.infoglobo.presenter.utils.ReactiveUtils;
 import br.android.cericatto.infoglobo.presenter.utils.Utils;
-import br.android.cericatto.infoglobo.view.activity.DetailsActivity;
 import br.android.cericatto.infoglobo.view.activity.MainActivity;
 import br.android.cericatto.infoglobo.view.adapter.DividerItemDecoration;
 import br.android.cericatto.infoglobo.view.adapter.NoticiaAdapter;
@@ -73,6 +69,12 @@ public class MainPresenter {
         binding.idActivityMainRecyclerView.setAdapter(mActivity.getAdapter());
         binding.idActivityMainRecyclerView.addItemDecoration(
             new DividerItemDecoration(mActivity, R.drawable.divider));
+    }
+
+    public void setHeader(Noticia noticia, ActivityMainBinding binding) {
+        binding.included.setNoticia(noticia);
+        binding.included.setSecao(noticia.getEditor());
+        binding.included.setImagem(noticia.getImage());
     }
 
     //--------------------------------------------------

@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="noticia"
+            type="br.android.cericatto.infoglobo.model.Noticia" />
+
+        <variable
+            name="secao"
+            type="br.android.cericatto.infoglobo.model.parsing.SecaoBean" />
+
+        <variable
+            name="imagem"
+            type="br.android.cericatto.infoglobo.model.parsing.ImagensBean" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/id_activity_main__image_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@{imagem.url}" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/id_activity_main____editoria_text_view"
                 android:layout_width="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:layout_height="wrap_content"
                 android:background="@color/black"
                 android:gravity="center"
                 android:padding="5dp"
+                android:text="@{secao.nome}"
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 android:textStyle="bold" />
@@ -36,8 +52,11 @@
                 android:id="@+id/id_activity_main____titulo_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/black_transparent_70"
                 android:paddingBottom="15dp"
-                android:paddingTop="5dp"
+                android:paddingTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="@{noticia.titulo}"
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:textStyle="bold" />

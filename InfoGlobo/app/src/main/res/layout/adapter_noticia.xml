@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-
     <data>
-
         <variable
             name="noticia"
             type="br.android.cericatto.infoglobo.model.Noticia" />
+        <variable
+            name="secao"
+            type="br.android.cericatto.infoglobo.model.parsing.SecaoBean" />
+        <variable
+            name="imagem"
+            type="br.android.cericatto.infoglobo.model.parsing.ImagensBean" />
     </data>
 
     <LinearLayout
@@ -19,7 +23,7 @@
             android:id="@+id/id_noticia_adapter__image_view"
             android:layout_width="120dp"
             android:layout_height="90dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@{imagem.url}" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Brasil"
+                android:text="@{secao.nome}"
                 android:textColor="@color/grey_500"
                 android:textSize="14dp"
                 android:textStyle="bold" />
@@ -45,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="15dp"
                 android:paddingTop="5dp"
-                android:text="Comissão do Senado aprova união estável entre pessoas do mesmo sexo"
+                android:text="@{noticia.titulo}"
                 android:textColor="@color/indigo_900"
                 android:textSize="14dp"
                 android:textStyle="bold" />
