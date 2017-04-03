@@ -1,3 +1,19 @@
+# Sobre meu aplicativo:
+
+## Design Patterns utilizados:
+* Creational Design Patterns: Builder, Injeção de Dependência e Singleton
+* Structural Design Patterns: Adapter
+* Behavioral Design Patterns: Observer, Model View Presenter e Model View ViewModel
+
+## Informações gerais:
+
+* Injeção de Dependência com Dagger 2
+* Arquitetura Geral do aplicativo é MVP
+* Arquitetura MVVM usada via Data Binding
+* Uso de RxJava e RxAndroid
+* Animações em Transições de Activity
+* Testes Unitários com Espresso, JUnit e IdlingResource
+
 # Quer trabalhar em nosso time de apps? 
 
 Esse é o nosso desafio para você!
