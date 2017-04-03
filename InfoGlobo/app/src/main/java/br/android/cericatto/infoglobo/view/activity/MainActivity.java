@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,11 +17,13 @@ import br.android.cericatto.infoglobo.AppConfiguration;
 import br.android.cericatto.infoglobo.R;
 import br.android.cericatto.infoglobo.databinding.ActivityMainBinding;
 import br.android.cericatto.infoglobo.model.Noticia;
+import br.android.cericatto.infoglobo.model.parsing.GloboResponse;
 import br.android.cericatto.infoglobo.presenter.MainPresenter;
 import br.android.cericatto.infoglobo.presenter.di.component.DaggerMainComponent;
 import br.android.cericatto.infoglobo.presenter.di.module.MainModule;
 import br.android.cericatto.infoglobo.presenter.utils.Utils;
 import br.android.cericatto.infoglobo.view.adapter.NoticiaAdapter;
+import rx.Observable;
 
 /**
  * MainActivity.java.
@@ -89,10 +93,22 @@ public class MainActivity extends BaseActivity {
     }
 
     public void updateAdapter(List<Noticia> list) {
-        mPresenter.updateAdapter(list, mBinding);
+        List<Noticia> newList = new ArrayList<>();
+        Observable.from(list)
+            .skip(1)
+            .subscribe(pessoa -> {
+                newList.add(pessoa);
+            });
+
+        mPresenter.updateAdapter(newList, mBinding);
         mPresenter.setHeader(list.get(0), mBinding);
 
         mSharedPreferences = getApplicationComponent().exposePreferences();
-        mSharedPreferences.edit().putString(AppConfiguration.NOTICIAS_LIST_EXTRA, Utils.toJson(list)).apply();
+        mSharedPreferences.edit().putString(AppConfiguration.NOTICIAS_LIST_EXTRA,
+            Utils.toJson(list)).apply();
+    }
+
+    public void goToDetails(View view) {
+        mPresenter.goToDetails();
     }
 }

@@ -1,6 +1,7 @@
 package br.android.cericatto.infoglobo.presenter;
 
 import android.app.ProgressDialog;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -16,7 +17,7 @@ import br.android.cericatto.infoglobo.model.Noticia;
 import br.android.cericatto.infoglobo.model.api.GloboService;
 import br.android.cericatto.infoglobo.presenter.utils.ActivityUtils;
 import br.android.cericatto.infoglobo.presenter.utils.DialogUtils;
-import br.android.cericatto.infoglobo.presenter.utils.ReactiveUtils;
+import br.android.cericatto.infoglobo.presenter.utils.RetrofitUtils;
 import br.android.cericatto.infoglobo.presenter.utils.Utils;
 import br.android.cericatto.infoglobo.view.activity.DetailsActivity;
 import br.android.cericatto.infoglobo.view.activity.MainActivity;
@@ -60,7 +61,7 @@ public class MainPresenter {
 
         String message = mActivity.getString(R.string.fetching_news);
         ProgressDialog dialog = DialogUtils.showProgressDialog(mActivity, message);
-        ReactiveUtils.getContent(mActivity, mApiService, dialog);
+        RetrofitUtils.getContent(mActivity, mApiService, dialog);
     }
 
     public void updateAdapter(List<Noticia> list, ActivityMainBinding binding) {
@@ -75,9 +76,16 @@ public class MainPresenter {
     }
 
     public void setHeader(Noticia noticia, ActivityMainBinding binding) {
+        int black = ContextCompat.getColor(mActivity, R.color.black);
+        binding.included.idActivityMainSecaoNomeTextView.setBackgroundColor(black);
         binding.included.setNoticia(noticia);
         binding.included.setSecao(noticia.getEditor());
         binding.included.setImagem(noticia.getImage());
+    }
+
+    public void goToDetails() {
+        ActivityUtils.startActivityExtras(mActivity, DetailsActivity.class,
+            AppConfiguration.NEWS_ID_EXTRA, 0);
     }
 
     //--------------------------------------------------
@@ -91,7 +99,7 @@ public class MainPresenter {
             public void onClick(View view, final int position) {
                 if (Utils.checkConnection(mActivity)) {
                     ActivityUtils.startActivityExtras(mActivity, DetailsActivity.class,
-                        AppConfiguration.NEWS_ID_EXTRA, position);
+                        AppConfiguration.NEWS_ID_EXTRA, position + 1);
                 } else {
                     DialogUtils.showNoConnectionDialog(mActivity);
                 }

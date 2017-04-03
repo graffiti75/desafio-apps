@@ -20,16 +20,17 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * ActivityUtils class.
+ * RetrofitUtils class.
  * 
  * @author Rodrigo Cericatto
  * @since Mar 29, 2017
  */
-public class ReactiveUtils {
-
-	//--------------------------------------------------
-	// Retrofit
-	//--------------------------------------------------
+public class RetrofitUtils {
+	public static <T> Observable.Transformer<T, T> setupSchedulers() {
+		return observable -> observable
+			.subscribeOn(Schedulers.newThread())
+			.observeOn(AndroidSchedulers.mainThread());
+	}
 
 	public static void getContent(AppCompatActivity activity, GloboService apiService, Dialog dialog) {
 		Observable<List<GloboResponse>> observable = apiService.getContent();
@@ -73,14 +74,4 @@ public class ReactiveUtils {
         if (imagens == null || imagens.size() <= 0) return null;
         return imagens.get(0);
     }
-
-	//--------------------------------------------------
-	// Common Database Methods
-	//--------------------------------------------------
-
-	public static <T> Observable.Transformer<T, T> setupSchedulers() {
-		return observable -> observable
-			.subscribeOn(Schedulers.newThread())
-			.observeOn(AndroidSchedulers.mainThread());
-	}
 }

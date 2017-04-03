@@ -3,7 +3,9 @@
     <data>
         <import type="br.android.cericatto.infoglobo.presenter.utils.Utils" />
         <variable
-            name="utils" type="Utils" />
+            name="utils"
+            type="Utils" />
+
         <variable
             name="noticia"
             type="br.android.cericatto.infoglobo.model.Noticia" />
@@ -17,13 +19,16 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:gravity="center_vertical"
+        android:onClick="goToDetails"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/black"
             android:scaleType="centerInside"
             android:src="@{imagem.url}" />
 
@@ -35,9 +40,9 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/id_activity_main__secao_nome_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
                 android:gravity="center"
                 android:padding="5dp"
                 android:paddingLeft="5dp"
