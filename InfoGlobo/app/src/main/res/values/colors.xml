@@ -164,6 +164,7 @@
     <color name="blue_700">#1976D2</color>
     <color name="blue_800">#1565C0</color>
     <color name="blue_900">#0D47A1</color>
+    <color name="blue_1000">#080761</color>
 
     <color name="blue_grey_50">#ECEFF1</color>
     <color name="blue_grey_100">#CFD8DC</color>

@@ -1,19 +1,24 @@
 package br.android.cericatto.infoglobo.view.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+
+import com.google.gson.Gson;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import br.android.cericatto.infoglobo.AppConfiguration;
 import br.android.cericatto.infoglobo.R;
 import br.android.cericatto.infoglobo.databinding.ActivityMainBinding;
 import br.android.cericatto.infoglobo.model.Noticia;
 import br.android.cericatto.infoglobo.presenter.MainPresenter;
 import br.android.cericatto.infoglobo.presenter.di.component.DaggerMainComponent;
 import br.android.cericatto.infoglobo.presenter.di.module.MainModule;
+import br.android.cericatto.infoglobo.presenter.utils.Utils;
 import br.android.cericatto.infoglobo.view.adapter.NoticiaAdapter;
 
 /**
@@ -30,10 +35,12 @@ public class MainActivity extends BaseActivity {
 
     // Context.
     private MainActivity mActivity = MainActivity.this;
+    private ActivityMainBinding mBinding;
+    private SharedPreferences mSharedPreferences;
 
     // Adapter.
     private NoticiaAdapter mAdapter;
-    private ActivityMainBinding mBinding;
+
 
     @Inject
     protected MainPresenter mPresenter;
@@ -52,7 +59,7 @@ public class MainActivity extends BaseActivity {
         super.onViewReady(savedInstanceState, intent);
         mBinding = DataBindingUtil.setContentView(mActivity, getContentView());
 
-        showBackArrow(mActivity, false, getString(R.string.toolbar_text));
+        showBackArrow(mActivity, false, true, getString(R.string.toolbar_text));
         mPresenter.setAdapter(mBinding);
     }
 
@@ -84,5 +91,8 @@ public class MainActivity extends BaseActivity {
     public void updateAdapter(List<Noticia> list) {
         mPresenter.updateAdapter(list, mBinding);
         mPresenter.setHeader(list.get(0), mBinding);
+
+        mSharedPreferences = getApplicationComponent().exposePreferences();
+        mSharedPreferences.edit().putString(AppConfiguration.NOTICIAS_LIST_EXTRA, Utils.toJson(list)).apply();
     }
 }

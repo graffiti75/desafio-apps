@@ -52,8 +52,8 @@ dependencies {
     // Support, Google and Square.
     compile "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
     compile "com.android.support:design:${SUPPORT_VERSION}"
-    compile "com.google.code.gson:gson:${GSON_VERSION}"
     compile "com.github.bumptech.glide:glide:${GLIDE_VERSION}"
+    compile "com.google.code.gson:gson:${GSON_VERSION}"
 
     // Dagger.
     provided "javax.annotation:jsr250-api:${JSR_VERSION}"

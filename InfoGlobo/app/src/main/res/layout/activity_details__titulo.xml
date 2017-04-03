@@ -1,40 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="br.android.cericatto.infoglobo.presenter.utils.Utils" />
+        <variable
+            name="utils" type="Utils" />
+        <variable
+            name="noticia"
+            type="br.android.cericatto.infoglobo.model.Noticia" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/id_activity_details__titulo_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:gravity="center_horizontal"
-            android:text="Sérgio Cabral é denunciado pela sexta vez na Lava-Jato"
-            android:textColor="@color/blue_900"
-            android:textSize="22sp"
+            android:text="@{noticia.titulo}"
+            android:textColor="@color/blue_1000"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/id_activity_details__subtitulo_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center_horizontal"
-            android:text="MPF afirma que ex-governador recebeu US$3 milhões em propinas da Odebrecht"
-            android:textColor="@color/blue_900"
-            android:textSize="16sp" />
+            android:text="@{noticia.subTitulo}"
+            android:textColor="@color/blue_1000"
+            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/id_activity_details__editoria_text_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:text="POR O GLOBO"
-            android:textColor="@color/grey_700"
-            android:textSize="12sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editor"
+                android:textColor="@color/grey_700"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@{Utils.setAutor(noticia.autor)}"
+                android:textColor="@color/light_blue_700"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,14 +69,13 @@
                 android:src="@drawable/ic_clock" />
 
             <TextView
-                android:id="@+id/id_activity_details__publicadoem_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:text="08/03/17 15:50"
+                android:text="@{Utils.setPublicadoEm(noticia.publicadoEm)}"
                 android:textColor="@color/grey_700"
                 android:textSize="12sp" />
         </LinearLayout>

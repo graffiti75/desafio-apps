@@ -13,11 +13,13 @@ public class AppConfiguration {
 	//----------------------------------------------	
 
 	public static final String BASE_URL = "https://raw.githubusercontent.com";
+	public static final String PREFERENCE_KEY = "preference_key";
 
 	//----------------------------------------------
 	// Extras
 	//----------------------------------------------
 
+	public static final String NOTICIAS_LIST_EXTRA = "noticias_list_extra";
 	public static final String NEWS_ID_EXTRA = "news_id_extra";
 
 	//----------------------------------------------

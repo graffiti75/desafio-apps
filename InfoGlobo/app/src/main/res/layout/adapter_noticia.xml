@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <import type="br.android.cericatto.infoglobo.presenter.utils.Utils" />
+        <variable
+            name="utils" type="Utils" />
         <variable
             name="noticia"
             type="br.android.cericatto.infoglobo.model.Noticia" />
@@ -14,44 +17,41 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="120dp"
+        android:layout_margin="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/id_noticia_adapter__image_view"
-            android:layout_width="120dp"
-            android:layout_height="90dp"
+            android:layout_width="153dp"
+            android:layout_height="102dp"
+            android:scaleType="centerInside"
             android:src="@{imagem.url}" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:orientation="vertical"
-            android:paddingLeft="5dp"
+            android:paddingLeft="20dp"
             android:paddingRight="5dp">
 
             <TextView
-                android:id="@+id/id_noticia_adapter__editoria_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:text="@{secao.nome}"
+                android:paddingTop="10dp"
+                android:text="@{Utils.capitalize(secao.nome)}"
                 android:textColor="@color/grey_500"
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/id_noticia_adapter__titulo_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15dp"
                 android:paddingTop="5dp"
                 android:text="@{noticia.titulo}"
-                android:textColor="@color/indigo_900"
-                android:textSize="14dp"
+                android:textColor="@color/blue_1000"
+                android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

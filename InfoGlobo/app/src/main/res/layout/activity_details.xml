@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="noticia"
+            type="br.android.cericatto.infoglobo.model.Noticia" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,11 +28,15 @@
 
                 <!-- Título -->
 
-                <include layout="@layout/activity_details__titulo" />
+                <include
+                    android:id="@+id/titulo_included"
+                    layout="@layout/activity_details__titulo" />
 
                 <!-- Imagem -->
 
-                <include layout="@layout/activity_details__imagem" />
+                <include
+                    android:id="@+id/imagem_included"
+                    layout="@layout/activity_details__imagem" />
 
                 <!-- Texto -->
 
@@ -35,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="RIO - O ex-governador do Rio Sérgio Cabral (PMDB) foi denunciado nesta quarta-feira pela sexta vez na Operação Lava-Jato. Nesta denúncia, a força-tarefa do"
+                    android:text="@{noticia.texto}"
                     android:textColor="@color/grey_700"
                     android:textSize="18sp" />
             </LinearLayout>

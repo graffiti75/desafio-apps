@@ -9,13 +9,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import br.android.cericatto.infoglobo.AppConfiguration;
 import br.android.cericatto.infoglobo.R;
 import br.android.cericatto.infoglobo.databinding.ActivityMainBinding;
 import br.android.cericatto.infoglobo.model.Noticia;
 import br.android.cericatto.infoglobo.model.api.GloboService;
+import br.android.cericatto.infoglobo.presenter.utils.ActivityUtils;
 import br.android.cericatto.infoglobo.presenter.utils.DialogUtils;
 import br.android.cericatto.infoglobo.presenter.utils.ReactiveUtils;
 import br.android.cericatto.infoglobo.presenter.utils.Utils;
+import br.android.cericatto.infoglobo.view.activity.DetailsActivity;
 import br.android.cericatto.infoglobo.view.activity.MainActivity;
 import br.android.cericatto.infoglobo.view.adapter.DividerItemDecoration;
 import br.android.cericatto.infoglobo.view.adapter.NoticiaAdapter;
@@ -87,8 +90,8 @@ public class MainPresenter {
             @Override
             public void onClick(View view, final int position) {
                 if (Utils.checkConnection(mActivity)) {
-//                    ActivityUtils.startActivityExtras(mActivity, DetailsActivity.class,
-//                        AppConfiguration.NEWS_ID_EXTRA, position);
+                    ActivityUtils.startActivityExtras(mActivity, DetailsActivity.class,
+                        AppConfiguration.NEWS_ID_EXTRA, position);
                 } else {
                     DialogUtils.showNoConnectionDialog(mActivity);
                 }
@@ -99,10 +102,4 @@ public class MainPresenter {
             }
         });
     }
-
-    //--------------------------------------------------
-    // Callbacks
-    //--------------------------------------------------
-
-
 }

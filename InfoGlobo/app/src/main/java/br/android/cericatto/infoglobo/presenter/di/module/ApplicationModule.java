@@ -1,11 +1,13 @@
 package br.android.cericatto.infoglobo.presenter.di.module;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import br.android.cericatto.infoglobo.AppConfiguration;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -66,5 +68,11 @@ public class ApplicationModule {
     @Singleton
     Context provideContext() {
         return mContext;
+    }
+
+    @Provides
+    @Singleton
+    public SharedPreferences providePreferences(){
+        return (mContext.getSharedPreferences(AppConfiguration.PREFERENCE_KEY, Context.MODE_PRIVATE));
     }
 }

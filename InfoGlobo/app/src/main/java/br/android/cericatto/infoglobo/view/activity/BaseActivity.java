@@ -50,12 +50,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     // Methods
     //--------------------------------------------------
 
-    public void showBackArrow(AppCompatActivity activity, Boolean homeEnabled, String string) {
+    public void showBackArrow(AppCompatActivity activity, boolean homeEnabled, boolean logoEnabled,
+        String string) {
         Toolbar toolbar = (Toolbar)activity.findViewById(R.id.id_toolbar);
         if (toolbar != null) {
             activity.setSupportActionBar(toolbar);
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(homeEnabled);
             activity.getSupportActionBar().setTitle(string);
+            if (logoEnabled) activity.getSupportActionBar().setLogo(R.drawable.ic_menu);
         }
     }
 }

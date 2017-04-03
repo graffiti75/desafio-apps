@@ -2,10 +2,11 @@
     <!-- Application -->
 
     <string name="app_name">InfoGlobo</string>
-    <string name="toolbar_text">O GLOBO</string>
+    <string name="toolbar_text">" O GLOBO"</string>
 
-    <!-- Main Activity -->
+    <!-- Details Activity -->
 
+    <string name="editor">POR </string>
 
     <!-- Dialog -->
 
