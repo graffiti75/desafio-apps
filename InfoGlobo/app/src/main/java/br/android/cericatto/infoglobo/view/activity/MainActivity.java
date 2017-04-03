@@ -93,6 +93,9 @@ public class MainActivity extends BaseActivity {
     }
 
     public void updateAdapter(List<Noticia> list) {
+        mBinding.idActivityMainOffline.setVisibility(View.GONE);
+        mBinding.idActivityMainOnline.setVisibility(View.VISIBLE);
+
         List<Noticia> newList = new ArrayList<>();
         Observable.from(list)
             .skip(1)

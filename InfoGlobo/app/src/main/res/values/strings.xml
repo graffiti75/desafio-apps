@@ -15,6 +15,9 @@
     <string name="network_error_dialog_title">Erro</string>
     <string name="network_error_dialog_message">Não há conexão. Por favor tente novamente mais tarde.</string>
 
+    <string name="loading">Loading</string>
+    <string name="please_wait">Please wait</string>
+
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_yes">Yes</string>

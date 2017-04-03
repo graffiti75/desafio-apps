@@ -15,6 +15,8 @@ import br.android.cericatto.infoglobo.model.parsing.GloboResponse;
 import br.android.cericatto.infoglobo.model.parsing.ImagensBean;
 import br.android.cericatto.infoglobo.model.parsing.SecaoBean;
 import br.android.cericatto.infoglobo.view.activity.MainActivity;
+import br.android.cericatto.infoglobo.view.activity.test.TestMainActivity;
+import br.android.cericatto.infoglobo.view.fragment.LoadingDialogApiFragment;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -44,6 +46,24 @@ public class RetrofitUtils {
 					Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
 				},
 				() -> dialog.dismiss()
+			);
+	}
+
+	public static void getContent(TestMainActivity activity, GloboService apiService, LoadingDialogApiFragment fragment) {
+		Observable<List<GloboResponse>> observable = apiService.getContent();
+		observable
+			.compose(setupSchedulers())
+			.subscribe(
+				(response) -> {
+					fragment.dismiss();
+					activity.onLoadingFinished();
+				},
+				(error) -> {
+					fragment.dismiss();
+					String message = activity.getString(R.string.fetch_news_error);
+					Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+				},
+				() -> fragment.dismiss()
 			);
 	}
 

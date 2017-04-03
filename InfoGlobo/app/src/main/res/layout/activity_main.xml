@@ -9,18 +9,34 @@
 
         <include layout="@layout/toolbar" />
 
-        <!-- Primeira Notícia -->
+        <!-- Layout Válido -->
 
-        <include
-            android:id="@+id/included"
-            layout="@layout/activity_main__primeira_noticia" />
-
-        <!-- Lista de Notícias -->
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/id_activity_main__recycler_view"
+        <LinearLayout
+            android:id="@+id/id_activity_main__online"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/included"
+                layout="@layout/activity_main__primeira_noticia" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/id_activity_main__recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+        <!-- Layout Offline -->
+
+        <TextView
+            android:id="@+id/id_activity_main__offline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/network_error_dialog_message" />
     </LinearLayout>
 </layout>
